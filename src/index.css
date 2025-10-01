@@ -9,8 +9,36 @@
   --color-light-orange: #ffcbb4;
   --color-red: #ff4a59;
   --color-light-red: #ffbec3;
+  --breakpoint-3xl: 110rem;
+  --breakpoint-4xl: 124rem;
+  --text-hero-lg: 125px;
 }
 
 html {
   @apply bg-black;
+}
+
+.gradient-border {
+  border: 2px solid transparent;
+  border-radius: 9999px;
+  background: linear-gradient(#020409, #020409) padding-box,
+    linear-gradient(
+        120deg,
+        var(--color-border-purple),
+        var(--color-orange),
+        var(--color-red)
+      )
+      border-box;
+}
+
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--from, var(--color-purple)) 1%,
+    var(--via, var(--color-orange)) 40%,
+    var(--to, var(--color-red)) 90%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
