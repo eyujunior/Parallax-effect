@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Clash Grotesk", sans-serif;
+  --color-purple: #b53ea4;
+  --color-light-purple: #ffd6f9;
+  --color-border-purple: #963488;
+  --color-orange: #fc6f32;
+  --color-light-orange: #ffcbb4;
+  --color-red: #ff4a59;
+  --color-light-red: #ffbec3;
+}
+
+html {
+  @apply bg-black;
+}
