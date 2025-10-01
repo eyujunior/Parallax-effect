@@ -1,15 +1,25 @@
 // App.tsx
-import { motion, useAnimation, easeOut } from "framer-motion";
+import {
+  motion,
+  useAnimation,
+  easeOut,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { useEffect, useRef } from "react";
 
 import Hero from "./components/layout/Hero";
 import Navbar from "./components/layout/Navbar";
-import bottomLeftImg from "./assets/bottom-left-blob.webp";
+import orangeBlobImg from "./assets/bottom-left-blob.webp";
 import topMiddleImg from "./assets/top-middle-blob.webp";
 import heroGlobeImg from "./assets/hero-globe.webp";
 import StatCards from "./components/layout/StatCards";
+import Partners from "./components/layout/Partners";
+import CrowdSourcing from "./components/layout/CrowdSourcing";
 
 export default function App() {
+  const { scrollY } = useScroll();
+  const globeY = useTransform(scrollY, [0, 2000], [0, -600]);
   const heroCtrl = useAnimation();
   const statsCtrl = useAnimation();
   const titleCtrl = useAnimation();
@@ -91,37 +101,40 @@ export default function App() {
   }, [heroCtrl, statsCtrl, titleCtrl]);
 
   return (
-    <div className="font-display px-4 sm:px-6 md:px-12 xl:px-16 2xl:px-20 text-white h-screen relative overflow-x-hidden">
-      <img
-        src={bottomLeftImg}
-        alt="bottom left"
-        className="absolute -bottom-[350px] -left-[250px] opacity-60 -z-10"
-      />
-      <img
-        src={topMiddleImg}
-        alt="top middle"
-        className="absolute -z-10 top-0 left-[350px] opacity-80"
-      />
-      <img
+    <div className="font-display px-4 sm:px-6 md:px-12 xl:px-16 2xl:px-20 text-white min-h-screen relative overflow-x-hidden">
+      <motion.img
         src={heroGlobeImg}
         alt="right globe"
-        className="absolute -z-50 bottom-0 right-0 opacity-80 2xl:w-[800px] 4xl:w-[1000px] rotate-12"
+        className="fixed bottom-0 right-0 -z-50 opacity-80 2xl:w-[800px] 4xl:w-[1000px] rotate-12 will-change-transform"
+        style={{ y: globeY }}
       />
+      <div className="relative h-screen">
+        <img
+          src={orangeBlobImg}
+          alt="bottom left"
+          className="absolute -bottom-[500px] 4xl:-bottom-[350px] -left-[350px] 4xl:-left-[250px] opacity-60 -z-10 hidden md:block"
+        />
+        <img
+          src={topMiddleImg}
+          alt="top middle"
+          className="absolute -z-10 top-0 left-[250px] opacity-80 hidden md:block"
+        />
 
-      <Navbar />
+        <Navbar />
+        <motion.div animate={heroCtrl} className="will-change-transform">
+          <Hero titleCtrl={titleCtrl} />
+        </motion.div>
 
-      <motion.div animate={heroCtrl} className="will-change-transform">
-        <Hero titleCtrl={titleCtrl} />
-      </motion.div>
+        <div className="h-8" />
 
-      <div className="h-8" />
+        <motion.div animate={statsCtrl} className="will-change-transform">
+          <div className="mt-6 xl:mt-18 4xl:mt-28"></div>
+          <StatCards />
+        </motion.div>
+      </div>
 
-      <motion.div animate={statsCtrl} className="will-change-transform">
-        <div className="mt-6 xl:mt-18 4xl:mt-28"></div>
-        <StatCards />
-      </motion.div>
-
-      <div className="h-[120vh]" />
+      <Partners />
+      <CrowdSourcing />
     </div>
   );
 }

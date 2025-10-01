@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Button from "../ui/Button";
 
 type HeroProps = {
   titleCtrl: any;
@@ -36,10 +37,12 @@ const Hero = ({ titleCtrl }: HeroProps) => {
         compete against OpenAI
       </p>
       <div className="flex items-center gap-6">
-        <button className="px-12 py-3 xl:py-5.5 border rounded-full gradient-border cursor-pointer">
+        <Button className="px-12 py-3 xl:py-5.5" variant="gradient">
           Buy Salt AI
-        </button>
-        <button className="px-12 py-3 xl:py-5.5 cursor-pointer">Try Now</button>
+        </Button>
+        <Button variant="ghost" className="px-12 py-3 xl:py-5.5">
+          Try Now
+        </Button>
       </div>
     </div>
   );
