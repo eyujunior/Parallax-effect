@@ -25,7 +25,7 @@ const StatCards = () => {
       variants={container}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.6 }}
+      viewport={{ once: true, amount: 0.7 }}
       className="grid grid-cols-1 md:grid-cols-3 gap-6 2xl:gap-8"
     >
       <motion.div
@@ -35,7 +35,7 @@ const StatCards = () => {
         <h4 className="font-bold text-2xl sm:text-3xl xl:text-4xl 2xl:text-5xl 4xl:text-6xl">
           1,873
         </h4>
-        <p className="text-lg 3xl:text-2xl">LLM models</p> 
+        <p className="text-lg 3xl:text-2xl">LLM models</p>
       </motion.div>
 
       <motion.div

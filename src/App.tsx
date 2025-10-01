@@ -105,7 +105,7 @@ export default function App() {
       <motion.img
         src={heroGlobeImg}
         alt="right globe"
-        className="fixed bottom-0 right-0 -z-50 opacity-80 2xl:w-[800px] 4xl:w-[1000px] rotate-12 will-change-transform"
+        className="fixed bottom-0 right-0 -z-50 opacity-80 w-[800px] 4xl:w-[1000px] rotate-12 will-change-transform"
         style={{ y: globeY }}
       />
       <div className="relative h-screen">
@@ -128,7 +128,7 @@ export default function App() {
         <div className="h-8" />
 
         <motion.div animate={statsCtrl} className="will-change-transform">
-          <div className="mt-6 xl:mt-18 4xl:mt-28"></div>
+          <div className="mt-6 xl:mt-28"></div>
           <StatCards />
         </motion.div>
       </div>
